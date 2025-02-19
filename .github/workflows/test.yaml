@@ -18,9 +18,6 @@ jobs:
         fetch-depth: 0
 
     - name: Debug Repository Files
-      run: ls -la
-
-    - name: Debug Repository Files
       run: ls -R
 
 
@@ -33,7 +30,8 @@ jobs:
     - run: pip install pytest pytest-asyncio httpx motor pytest-cov
 
     - name: Run Unit Tests
-      run: pytest tests/unit --cov=my_bookstore --cov-report=term-missing
+      run: pytest tests --cov=my_bookstore --cov-report=term-missing
+
 
     - name: Run Integration Tests
       run: pytest tests/integration
