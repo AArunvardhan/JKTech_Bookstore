@@ -28,6 +28,9 @@ jobs:
       with:
         python-version: '3.11'
 
+    - name: Set PYTHONPATH
+      run: echo "PYTHONPATH=$PWD" >> $GITHUB_ENV  # Fix module import error
+
     - name: Install Dependencies
       run: |
         pip install -r requirements.txt
