@@ -17,21 +17,24 @@ jobs:
       with:
         fetch-depth: 0
 
+    - name: Debug Current Directory
+      run: pwd
+
     - name: Debug Repository Files
       run: ls -R
-
 
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.11'
 
-    - run: pip install -r requirements.txt
-    - run: pip install pytest pytest-asyncio httpx motor pytest-cov
+    - name: Install Dependencies
+      run: |
+        pip install -r requirements.txt
+        pip install pytest pytest-asyncio httpx motor pytest-cov
 
     - name: Run Unit Tests
-      run: pytest tests --cov=my_bookstore --cov-report=term-missing
-
+      run: pytest JKTech_Bookstore/tests --cov=JKTech_Bookstore/my_bookstore --cov-report=term-missing
 
     - name: Run Integration Tests
-      run: pytest tests/integration
+      run: pytest JKTech_Bookstore/tests/integration
