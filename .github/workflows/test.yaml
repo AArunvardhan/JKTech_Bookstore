@@ -1,0 +1,35 @@
+name: Test Suite
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      mongo:
+        image: mongo:latest
+        ports:
+          - 27017:27017
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Debug Repository Files
+      run: ls -la
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - run: pip install -r requirements.txt
+    - run: pip install pytest pytest-asyncio httpx motor
+
+    - name: Run Unit Tests
+      run: pytest tests/unit --cov=my_bookstore --cov-report=term-missing
+
+    - name: Run Integration Tests
+      run: pytest tests/integration
