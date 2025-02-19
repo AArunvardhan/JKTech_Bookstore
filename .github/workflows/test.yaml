@@ -26,7 +26,7 @@ jobs:
         python-version: '3.11'
 
     - run: pip install -r requirements.txt
-    - run: pip install pytest pytest-asyncio httpx motor
+    - run: pip install pytest pytest-asyncio httpx motor pytest-cov
 
     - name: Run Unit Tests
       run: pytest tests/unit --cov=my_bookstore --cov-report=term-missing
