@@ -20,6 +20,10 @@ jobs:
     - name: Debug Repository Files
       run: ls -la
 
+    - name: Debug Repository Files
+      run: ls -R
+
+
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
