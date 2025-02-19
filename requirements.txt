@@ -12,3 +12,4 @@ httpx
 pytest-asyncio
 python-jose[cryptography]
 pymongo
+pytest-cov
